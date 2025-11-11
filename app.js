@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
+const connectToDB = require("./db.congig");
 
 const app = express();
 
@@ -13,6 +14,15 @@ app.get("/",(req,res)=>{
     res.status(200).json({success: true})
 });
 
-app.listen(3000,()=>{
-    console.log("Server started on http://localhost:3000");
-});
+
+
+
+connectToDB().then(()=>{
+        app.listen(3000,()=>{
+            console.log("Server started on http://localhost:3000");
+        });
+}).catch((error)=>{
+            console.log("//////////////     cant start server    //////////////")
+            console.log(error);
+        }
+);
