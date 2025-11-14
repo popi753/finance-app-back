@@ -19,7 +19,7 @@ const origins = process.env.CORS_ORIGINS?.split(",") || [];
 app.use(
     cors({
         origin: origins,
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         credentials: true,
     })
 );
