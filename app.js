@@ -32,13 +32,25 @@ app.get("/",(req,res)=>{
 app.use("/auth", authRouter);
 
 
+// connectToDB().then(()=>{
+//         app.listen(process.env.PORT || 3000,()=>{
+//             console.log("Server started on http://localhost:3000");
+//         });
+// }).catch((error)=>{
+//             console.log("//////////////     cant start server    //////////////")
+//             console.log(error);
+//         }
+// );
 
 connectToDB().then(()=>{
-        app.listen(process.env.PORT || 3000,()=>{
-            console.log("Server started on http://localhost:3000");
-        });
+            console.log("//////////////     connected to db    //////////////");
 }).catch((error)=>{
-            console.log("//////////////     cant start server    //////////////")
+            console.log("//////////////     cant start server    //////////////");
             console.log(error);
+            return;
         }
 );
+
+
+
+module.exports = app;
