@@ -7,5 +7,6 @@ module.exports = async ()=>{
     } catch (error) {
             console.log("/////////////////////  cant connect to db  //////////////////////////");
             console.log(error);
+            throw error;
     }
 }

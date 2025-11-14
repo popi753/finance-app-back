@@ -5,6 +5,8 @@ const cors = require("cors");
 const connectToDB = require("./db.config");
 require("dotenv").config();
 
+const authRouter = require("./auth/auth.controller.js");
+
 const app = express();
 
 app.use(logger('dev'));
@@ -27,10 +29,12 @@ app.get("/",(req,res)=>{
     res.status(200).json({success: true})
 });
 
+app.use("/auth", authRouter);
+
 
 
 connectToDB().then(()=>{
-        app.listen(3000,()=>{
+        app.listen(process.env.PORT || 3000,()=>{
             console.log("Server started on http://localhost:3000");
         });
 }).catch((error)=>{
