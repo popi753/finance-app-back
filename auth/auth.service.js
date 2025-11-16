@@ -24,7 +24,7 @@ exports.register = async (req,res)=>{
         res.status(201).json({success: true, token});
     } catch (error) {
         console.log(error);
-        res.status(500).json({error: {message: "Could not register user"}});        
+        res.status(500).json({error: {message: "Could not register user, please try later"}});        
     }
 };
 
@@ -52,7 +52,7 @@ exports.login = async (req,res)=>{
         res.status(201).json({success: true, token});
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: {message : "Failed to login"} });
+        res.status(500).json({ error: {message : "Failed to login, please try later"} });
     }
 };
 
